@@ -2,13 +2,20 @@ import * as dotenv from 'dotenv';
 import { OpenAI } from "openai";
 import express from 'express';
 import cors from 'cors';
-
+import path from 'path';
 dotenv.config();
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
+
+app.get('/', (req,res)=>{
+    res.render('index');
+});
 
 app.post("/generate", async(req,res)=>{
     const prompt = req.body.prompt;

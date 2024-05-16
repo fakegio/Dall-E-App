@@ -5,6 +5,7 @@ import cors from 'cors';
 import path from 'path';
 dotenv.config();
 const app = express();
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -38,6 +39,6 @@ app.post("/generate", async(req,res)=>{
 
 });
 
-//set up app on port 8080
-app.listen(8080,()=>console.log('server running at localhost:8080/generate'));
+//set up app on port 
+app.listen(PORT,()=>console.log('server running at localhost:8080/generate'));
 

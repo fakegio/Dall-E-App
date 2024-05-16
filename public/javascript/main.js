@@ -26,12 +26,12 @@ form.addEventListener('submit', async(e)=>{
     const {image} = await response.json();
     const result = document.querySelector('#result');
     result.innerHTML = `<img src="${image}" width="512"/>`;
+    hideSpinner();
   }else{
+    hideSpinner();
     const err = await response.text();
-    console.error(err);
+    alert(err);
   }
-  //re-enable button
-  hideSpinner();
 });
 
 //Disables button and adds spinner

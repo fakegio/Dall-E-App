@@ -33,12 +33,11 @@ app.post("/generate", async(req,res)=>{
         res.send({image});
 
     }catch(error){
-        console.error(error);
-        res.status(500).send(error?.response.data.eror.message || 'Something went wrong.')
+        res.status(500).send(error.message || 'Something went wrong.')
     }
 
 });
 
 //set up app on port 
-app.listen(PORT,()=>console.log('server running at localhost:8080/generate'));
+app.listen(PORT,()=>console.log('server listening to localhost:'+PORT));
 
